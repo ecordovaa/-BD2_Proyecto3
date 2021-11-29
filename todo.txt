@@ -1,0 +1,3 @@
+- Analisis de distancia de radios (seleccionar 4)
+- Benchmarks para la busqueda de rango
+- Informe
