@@ -1,24 +1,8 @@
-import random
-import face_recognition as FR
-from sklearn.decomposition import PCA
-from build_idxs import df
-import numpy as np
-from preprocessing.measure_reduction import COMPARE_FACTOR, local_face_distance
+from glob_consts import random, df, np
+from preprocessing.measure_reduction import local_face_distance
 import matplotlib.pyplot as plt
 
 N = 15000
-
-def encode_file(file):
-    rep = FR.load_image_file(f"fotos_query/{file}")
-    enc = FR.face_encodings(rep)
-    try:
-        face = enc[0]
-        pca = PCA(n_components=df.shape[1])
-        pca.fit(face)
-        pca.transform(face)
-        return face
-    except IndexError:
-        print("[ENCODE FILE] Error: Not face found on the provided image.")
 
 def distances_analysis():
     dist = []

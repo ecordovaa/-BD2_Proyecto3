@@ -1,12 +1,4 @@
-import os
-import face_recognition as FR
-import pandas as pd
-import timeit
-
-# Dirección de la carpeta de imagenes
-DIR_PATH = "fotos_LFW/"
-
-file_list = sorted(os.listdir(DIR_PATH))
+from glob_consts import FR, pd, timeit, DIR_PATH, file_list
 
 # @Return: Un csv con la representación dada por la líbreria de face_recognition
 #          (128D) para cada una de las imagenes en la carpeta referenciada.
@@ -26,3 +18,6 @@ def write_raw_vectors():
     df.to_csv("data/raw.csv", index=False)
     stop = timeit.default_timer()
     print(f"[RAW WRITTER] All encoding vectors were written in {round(stop - start,5)}s")
+
+if __name__ == "__main__":
+    write_raw_vectors()

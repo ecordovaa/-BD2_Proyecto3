@@ -1,11 +1,4 @@
-from rtree import index
-import pandas as pd
-import timeit
-import numpy as np
-from preprocessing.raw_writter import DIR_PATH
-
-df = pd.read_csv("data/reduced.csv")
-sizes = [100, 200, 400, 800, 1600, 3200, 6400, 12800]
+from glob_consts import index, pd, timeit, np, DIR_PATH, df, sizes
 
 # Propiedades del RTree
 p = index.Property()
@@ -13,6 +6,7 @@ p.dimension = (df.shape[1] - 1)
 p.dat_extension = 'dat'
 p.idx_extension = 'idx'
 
+# :: Construye un conjunto de índices de rtree, los cuales tienen diferentes tamaños
 def build_indexes():
     idxs = [index.Index(f'indexes/rtree_complete',properties=p)]
     [idxs.append(index.Index(f'indexes/rtree_{size}',properties=p)) for size in list(reversed(sizes))]

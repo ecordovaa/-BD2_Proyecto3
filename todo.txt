@@ -1,3 +1,0 @@
-- Benchmarks para la busqueda de rango
-- Refactorización
-- Informe

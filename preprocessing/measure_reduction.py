@@ -1,7 +1,4 @@
-import pandas as pd
-from preprocessing.raw_writter import file_list
-import random
-import numpy as np
+from glob_consts import pd, file_list, random, np
 
 COMPARE_FACTOR = 5000
 tolerance = 0.6
@@ -26,7 +23,7 @@ def measurer():
         raw_distance = local_face_distance(raw_rand_faces[0], raw_rand_faces[1])
         reduced_rand_faces = [reduced_vectors.iloc[face, 1:] for face in face_idxs]
         reduced_distance = local_face_distance(reduced_rand_faces[0], reduced_rand_faces[1])
-        if (raw_distance - 0.6) * (reduced_distance - 0.6) < 0:
+        if (raw_distance - tolerance) * (reduced_distance - tolerance) < 0:
             print(f"***[MEASURER] FALSE NEGATIVE: According to face_recognition, these faces are similar, but reduced vectors do not say that.")
             err_count += 1
     print(f"***[MEASURER] Done {COMPARE_FACTOR} comparations, {err_count} false negatives ({round(err_count/COMPARE_FACTOR * 100,3)}%).")

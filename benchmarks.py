@@ -1,29 +1,41 @@
+from glob_consts import index, np, timeit, sizes, encode_file
 from prettytable import PrettyTable
-from build_idxs import sizes, df
-from rtree import index
-import timeit
-import random
-import numpy as np
-from search_algorithms import *
-
-# Propiedades del RTree
-p = index.Property()
-p.dimension = (df.shape[1] - 1)
-p.dat_extension = 'dat'
-p.idx_extension = 'idx'
+from search_algorithms import rtree_knn_search, knn_search, range_search
+from build_idxs import p
 
 if __name__ == "__main__":
-    t = PrettyTable()
-    t.field_names = ["N", "Are Equal", "KNN-Rtree(s)", "KNN-Secuencial(s)"]
-    pivot = df.iloc[random.randrange(len(df) - 1),1:]
+    pivot = encode_file("Aaron_Eckhart_0001.jpg")
+    iterations = 4
+    
+    knn_table = PrettyTable()
+    knn_table.field_names = ["N", "Are Equal", "KNN-Rtree(s)", f"KNN-Secuencial(s), {iterations} iterations", "Mean Time (s)"]
     for size in sizes:
         idx = index.Index(f'indexes/rtree_{size}',properties=p)
         start = timeit.default_timer()
         rtree_data = rtree_knn_search(idx, pivot)
-        rtree_time = timeit.default_timer() - start
-        start = timeit.default_timer()
-        seq_data = knn_search(size, pivot)
-        seq_time = timeit.default_timer() - start
+        rtree_time = f"{timeit.default_timer() - start:.6f}"
+        seq_times = []
+        for _ in range(iterations):
+            seq_data = []
+            start = timeit.default_timer()
+            seq_data = knn_search(size, pivot)
+            seq_times.append(f"{round(timeit.default_timer() - start,7):.7f}")
         are_equal = np.array_equal(rtree_data, seq_data)
-        t.add_row([size,are_equal,round(rtree_time,10),round(seq_time,10)])
-    print(t)
+        seq_times = [float(t) for t in seq_times]
+        seq_mean = f"{np.array(seq_times).mean():.6f}"
+        knn_table.add_row([size,are_equal,rtree_time,seq_times,seq_mean])
+    print(knn_table)
+
+    range_table = PrettyTable()
+    range_table.field_names = ["Radio", "Retrieved", f"Time(s), {iterations} iterations", "Mean Time (s)"]
+    for q in [0.6, 0.7275, 0.792, 0.85496]:
+        idx = index.Index('indexes/rtree_complete',properties=p)
+        times = []
+        for _ in range(iterations):
+            start = timeit.default_timer()
+            range_data = range_search(idx, pivot, q)
+            times.append(f"{timeit.default_timer() - start:.6f}")
+        times = [float(time) for time in times]
+        range_mean = f"{np.array(times).mean():.7f}"
+        range_table.add_row([f"{q:.5f}", len(range_data), times, range_mean])
+    print(range_table)

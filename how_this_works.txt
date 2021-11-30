@@ -1,0 +1,17 @@
+1 - Raw writter: Se leen las fotos en LFW_images y se escibre en un csv sus vectores caracteristicos (128D)
+
+2 - 
+
+* Dim reductor(variance = 0.93): Lee el csv de los vectors caracteristicos, genera una matriz con ellos y aplica un modelo de reducción con una representatividad del 0.93. Para este dataset, eso nos deja con 55 dimensiones. Este resultado se escribe tambien en un csv.
+
+* Se analizó la eficacia de esta reducción y se encontró que la confianza sigue siendo mayor al 98%
+
+3 - Construcción del índice de la libreria rtree. Se hace por partes, para poder estimar con tamaños variables en los benchmarks.
+
+4 - 
+
+* Se implementaron los algoritmos que se piden, el usuario puede optar por busqueda knn y en rango
+
+* Se analizo la distancia y se tomaron: 0.6 (tolerancia por default en la libreria), y los 3 cuantiles para la busqueda en rango.
+
+5 - Se tomaron estimaciones con los algoritmos.

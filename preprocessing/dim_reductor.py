@@ -1,7 +1,6 @@
-from raw_writter import *
-from sklearn.decomposition import PCA
+from glob_consts import timeit, pd, PCA
 
-# @Input: La varianza del dataset. PCA determina un número de componentes de forma que
+# @Input: La varianza del dataset. PCA determina un número de componentes (55) de forma que
 #         esta varianza actua como una cota máxima de error.
 # @Output: Un csv con los vectores reducidos de acuerdo a la varianza de input
 # :: Por defecto usamos una varianza de 0.93. Comprobaremos experimentalmente que tan 
