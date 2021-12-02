@@ -1,10 +1,13 @@
-from glob_consts import index, pd, timeit, np, DIR_PATH, df, sizes
+from glob_consts import index, DIR_PATH, timeit, np, df
 
 # Propiedades del RTree
 p = index.Property()
 p.dimension = (df.shape[1] - 1)
 p.dat_extension = 'dat'
 p.idx_extension = 'idx'
+
+# Variaciones del dataset para tests de performance
+sizes = [100, 200, 400, 800, 1600, 3200, 6400, 12800]
 
 # :: Construye un conjunto de índices de rtree, los cuales tienen diferentes tamaños
 def build_indexes():

@@ -1,4 +1,7 @@
-from glob_consts import FR, pd, timeit, DIR_PATH, file_list
+import sys
+sys.path.append('../BD2_Proyecto3')
+from glob_consts import FR, pd, timeit, DIR_PATH
+import os
 
 # @Return: Un csv con la representación dada por la líbreria de face_recognition
 #          (128D) para cada una de las imagenes en la carpeta referenciada.
@@ -8,7 +11,7 @@ def write_raw_vectors():
     [col_vector.append(str(d+1)) for d in range(128)]
     df = pd.DataFrame(columns=col_vector)
     row_id = 0
-    for file in file_list:
+    for file in sorted(os.listdir(DIR_PATH)):
         rep_img = FR.load_image_file(f"{DIR_PATH}{file}")
         rep_enc = FR.face_encodings(rep_img)
         if len(rep_enc) > 0:

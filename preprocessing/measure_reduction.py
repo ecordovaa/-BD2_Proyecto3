@@ -1,4 +1,6 @@
-from glob_consts import pd, file_list, random, np
+import sys
+sys.path.append('../BD2_Proyecto3')
+from glob_consts import pd, df, random, np
 
 COMPARE_FACTOR = 5000
 tolerance = 0.6
@@ -18,7 +20,7 @@ def measurer():
 
     for i in range (COMPARE_FACTOR):
         face_idxs = [random.randrange(df_size), random.randrange(df_size)]
-        print(f"[MEASURER] Comparation {i}: {file_list[face_idxs[0]]} vs. {file_list[face_idxs[1]]}")
+        print(f"[MEASURER] Comparation {i}: {df.iloc[face_idxs[0], 0]} vs. {df.iloc[face_idxs[1], 0]}")
         raw_rand_faces = [raw_vectors.iloc[face, 1:] for face in face_idxs]
         raw_distance = local_face_distance(raw_rand_faces[0], raw_rand_faces[1])
         reduced_rand_faces = [reduced_vectors.iloc[face, 1:] for face in face_idxs]

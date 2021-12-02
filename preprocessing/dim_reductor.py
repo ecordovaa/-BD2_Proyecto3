@@ -1,3 +1,5 @@
+import sys
+sys.path.append('../BD2_Proyecto3')
 from glob_consts import timeit, pd, PCA
 
 # @Input: La varianza del dataset. PCA determina un número de componentes (55) de forma que

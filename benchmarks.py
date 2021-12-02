@@ -1,7 +1,8 @@
-from glob_consts import index, np, timeit, sizes, encode_file
-from prettytable import PrettyTable
+from glob_consts import index, np, timeit, encode_file
+from build_idxs import sizes
 from search_algorithms import rtree_knn_search, knn_search, range_search
 from build_idxs import p
+from prettytable import PrettyTable
 
 if __name__ == "__main__":
     pivot = encode_file("Aaron_Eckhart_0001.jpg")
@@ -19,7 +20,8 @@ if __name__ == "__main__":
             seq_data = []
             start = timeit.default_timer()
             seq_data = knn_search(size, pivot)
-            seq_times.append(f"{round(timeit.default_timer() - start,7):.7f}")
+            seq_time = round(timeit.default_timer() - start,6)
+            seq_times.append("%.6f" % seq_time)
         are_equal = np.array_equal(rtree_data, seq_data)
         seq_times = [float(t) for t in seq_times]
         seq_mean = f"{np.array(seq_times).mean():.6f}"
@@ -34,7 +36,8 @@ if __name__ == "__main__":
         for _ in range(iterations):
             start = timeit.default_timer()
             range_data = range_search(idx, pivot, q)
-            times.append(f"{timeit.default_timer() - start:.6f}")
+            iter_time = round(timeit.default_timer() - start,6)
+            times.append("%.6f" % iter_time)
         times = [float(time) for time in times]
         range_mean = f"{np.array(times).mean():.7f}"
         range_table.add_row([f"{q:.5f}", len(range_data), times, range_mean])
