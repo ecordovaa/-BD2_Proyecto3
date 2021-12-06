@@ -18,7 +18,7 @@ Dada una imagen en disco, la librería de face recognition identiica los rostros
 
 ### Rtre
 
-*(Documentación en: rtree.readthedocs.io)*
+*(Documentación en: https://rtree.readthedocs.io)*
 
 Las codificaciones son insertadas en una estructura Rtree que se almacena en disco. Utilizaremos índices con distintos números de elementos para poder evaluar el rendimiento de los algoritmos de búsqueda. La construcción de estos índices se realiza en `build_idxs.py`
 
@@ -66,7 +66,9 @@ La búsqueda de los primeros candidatos se realiza en *O(lgn)*. Luego, el segund
 
 Se lleno el cuadro comparativo entre KNN-Rtree y KNN-Secuencial usando colecciones de datos con distinto número de elementos (ver `benchmarks.py`). 
 
-![](https://cdn.discordapp.com/attachments/917173840377937960/917269304850935848/bd2_p3_helper_images.png)
+<p align="center">
+  <img src="https://cdn.discordapp.com/attachments/917173840377937960/917269304850935848/bd2_p3_helper_images.png" />
+</p>
 
 ### Elecciones de radio 
 
@@ -88,7 +90,9 @@ Se escogieron los radios: **0.6, 0.7275, 0.792 y 0.85496**. En primer lugar, 0.6
 
 Se realizó un segundo cuadro comparativo para esta búsqueda, donde se consideraron el número de elementos devueltos y la media de los tiempos de ejecución, en 4 iteraciones. Se consideró como imagen de búsqueda a `Aaron Eckhart`, del cual se tiene una única imagen suya en la colección.
 
-![](https://cdn.discordapp.com/attachments/917173840377937960/917264005863735336/benchmarks_range.png)
+<p align="center">
+  <img src="https://cdn.discordapp.com/attachments/917173840377937960/917264005863735336/benchmarks_range.png" />
+</p>
 
 ## Glosario de directorios
 
