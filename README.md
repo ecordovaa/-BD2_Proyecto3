@@ -9,13 +9,17 @@ Desarrollado por: **Efraín Córdova**, **Miguel Lama** y **Diego Paredes**.
 ## Librerías utilizadas
 
 ### Face Recognition
+
 (*Documentación en: https://face-recognition.readthedocs.io*)
+
 Dada una imagen en disco, la librería de face recognition identiica los rostros que se encuentran en dicha imagen (*load_image_file*). Luego, genera un vector de 128 dimensiones que representa una codificación de alguno de los rostros identificados (*face_encodings*). Para este proyecto, llamaremos **codificación** al vector de 128 dimensiones que representa al rostro más reconocible de la imagen. Guardaremos la colección de codificaciones en disco, en `data/raw.csv`. La codificación puede usarse para comparar distintas imágenes, como puede apreciarse en el siguiente gráfico:
 
 ![](https://cdn.discordapp.com/attachments/917173840377937960/917176643620065341/fr.png)
 
 ### Rtre
+
 *(Documentación en: rtree.readthedocs.io)*
+
 Las codificaciones son insertadas en una estructura Rtree que se almacena en disco. Utilizaremos índices con distintos números de elementos para poder evaluar el rendimiento de los algoritmos de búsqueda. La construcción de estos índices se realiza en `build_idxs.py`
 
 ![](https://cdn.discordapp.com/attachments/917173840377937960/917185308867571752/built_time.png)
