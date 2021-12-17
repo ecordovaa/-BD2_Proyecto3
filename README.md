@@ -6,6 +6,24 @@ Desarrollado por: **Efraín Córdova**, **Miguel Lama** y **Diego Paredes**.
 
 ## ¿Cómo se usa el aplicativo?
 
+La interfaz es de uso simple. El usuario debe indicar alguna referencia al nombre de la imagen que entrará a los algoritmos de búsqueda por similitud. Luego, debe ingresar el parámetro de filtro (el factor k en el caso de la búsqueda de vecinos y el radio en el caso de la búsqueda por rango). Finalmente, debe seleccionar cual de las búsquedas realizará el programa. Al dar click en la opción que se eligió, la interfaz mostrará las imágenes que se encontraban en la salida del algoritmo escogido.
+
+### Ejemplo de búsqueda KNN
+
+![](https://cdn.discordapp.com/attachments/917173840377937960/921281631875133450/unknown.png)
+
+Salida del algoritmo:
+
+![](https://cdn.discordapp.com/attachments/917173840377937960/921281779564949624/unknown.png)
+
+### Ejemplo de búsqueda por rango
+
+![](https://cdn.discordapp.com/attachments/917173840377937960/921281946758316042/unknown.png)
+
+Salida del algoritmo:
+
+![](https://cdn.discordapp.com/attachments/917173840377937960/921282045546737684/unknown.png)
+
 ## Librerías utilizadas
 
 ### Face Recognition
@@ -94,11 +112,12 @@ Se realizó un segundo cuadro comparativo para esta búsqueda, donde se consider
   <img src="https://cdn.discordapp.com/attachments/917173840377937960/917264005863735336/benchmarks_range.png" />
 </p>
 
-## Glosario de directorios
+## Glosario de directorios y archivos
 
  - **data**: Directorio que contiene dos csv: raw.csv (codificaciones originales en 128D) y reduced.csv (codificaciones reducidas en 55D).
  - **indexes**: Directorio que contiene 9 índices con distinta cantidad de elementos, uno de ellos contiene a toda la colección y es el que se usa por defecto.
- - **LFW_images**: Directorio que contiene las 13233 imágenes de la colección proporcionada.
+ - **static/LFW_images**: Directorio que contiene las 13233 imágenes de la colección proporcionada.
+ - **data/names.txt**: Lista de nombres únicos en la carpeta de imagénes. Se usa para el algoritmo de recolección de imágenes del frontend.
 
 ## Otras dependencias
 
