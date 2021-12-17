@@ -7,7 +7,7 @@ from sklearn.decomposition import PCA
 import random
 import timeit
 
-DIR_PATH = "LFW_images/"
+DIR_PATH = "static/LFW_images/"
 df = pd.read_csv("data/reduced.csv")
 
 def encode_file(file):
