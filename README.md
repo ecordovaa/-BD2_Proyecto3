@@ -2,8 +2,6 @@
 
 Desarrollado por: **Efraín Córdova**, **Miguel Lama** y **Diego Paredes**.
 
-## Demo en video
-
 ## ¿Cómo se usa el aplicativo?
 
 ## Librerías utilizadas
